@@ -1,13 +1,13 @@
 import dotenv from "dotenv";
 dotenv.config();
-import express, { json } from "express";
+import express from "express";
 import mongoose from "mongoose";
-
+import cors from "cors"
 
 import AuthRoute from "./routes/Auth";
 import IndexRoute from "./routes/Index";
 import UsersRoute from "./routes/Users";
-import cors from "cors"
+
 
 const app  = express();
 
@@ -16,8 +16,11 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USERID}:${process.env.MONGO_
   
 });
 
-app.use(cors())
-app.use(json())
+app.use(express.json())
+app.use(cors({
+  origin: true,
+}))
+
 
 app.use("/",IndexRoute)
 app.use("/auth",AuthRoute)

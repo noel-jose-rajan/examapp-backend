@@ -15,7 +15,8 @@ const UserSchema = new Schema({
 
     email_verified_at: {
         type: String,
-        default: "not verified"
+        default: "not verified",
+        required: false
     },
 
     password: {
@@ -24,7 +25,8 @@ const UserSchema = new Schema({
     },
 
     remember_token: {
-        type: String
+        type: String,
+        required: false
     },
 
     created_at: {
