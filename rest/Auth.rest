@@ -1,0 +1,44 @@
+@url = http://127.0.0.1:5000/auth
+###
+GET {{url}}/
+#Returns Nothing
+
+###
+POST {{url}}/signup
+Content-Type: application/json
+
+{
+    "name": "Noel jose",    
+    "email": "noe2l@gmail.com",
+    "password": "Mirage20#@"
+
+}
+
+###
+GET {{url}}/verify?token=eyJhbGciOiJIUzI1NiJ9.MTBiNzU3OTNkM2U5MzBjODhhNmY4ZGExN2IyYWZkZjFmMTM1NjNlZDYxMDk2Y2JhMjdkMzQwY2UwZDg3M2VhN2QzMThlZjMyYzYxYzE1YmI4MjFiNGI2YzZjZGI0ZjQ5MzQzMGFhMmM1NzViMmJiZmYzZDZkOTdhNTBjNzkwY2VkNWRhMWI4N2NmYzlmYTBiNDhlNTAyNTRlNzMzNjM1YzM1NjZmNzgzY2ZkNGI2YTUwNmE1MWY4NzM2MTA2NGQyZTI4Y2ZiNzczZjdmNTg2MDFhMjAzNThjYmQ3ODc5MjY5YzRjMTFlMzE4OWEyOTM5.fVWmHfzKctnSDmAs_JcEtsD5I7hAQF7McDCFecf0cyk
+
+###
+POST {{url}}/login
+Content-Type: application/json
+
+{
+    "email": "noel@gmail.com",
+    "password": "Mirage20#@"
+}
+
+
+###
+POST {{url}}/resetpassword
+Content-Type: application/json
+
+{
+    "email": "noe2l@gmail.com"
+}
+
+###
+POST {{url}}/reverification
+Content-Type: application/json
+
+{
+    "email": "noe2l@gmail.com"
+}
