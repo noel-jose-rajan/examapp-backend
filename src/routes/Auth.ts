@@ -53,20 +53,20 @@ auth.post('/signup', async (req: any, res: Response) => {
 
     try {
 
-        // //Check Email Validity
-        // if(!(req.body.email).match(emailPattern)){
-        //     throw new Error("this is not a valid email address")
-        // }
-        // //Check Exising Email / Number
-        // else if (the_user.length > 0) {
-        //     throw new Error("this email / phone number already exists")
-        // } 
-        // //Check Password Strength
-        // else if(!(req.body.password).match(passwordStrengthPattern)){
-        //     throw new Error("weak password")
-        // }
+        //Check Email Validity
+        if(!(req.body.email).match(emailPattern)){
+            throw new Error("this is not a valid email address")
+        }
+        //Check Exising Email / Number
+        else if (the_user.length > 0) {
+            throw new Error("this email / phone number already exists")
+        } 
+        //Check Password Strength
+        else if(!(req.body.password).match(passwordStrengthPattern)){
+            throw new Error("weak password")
+        }
         
-        // else {
+        else {
 
 
             let save_user = new UserDB(data)
@@ -98,8 +98,8 @@ auth.post('/signup', async (req: any, res: Response) => {
                     from: '"Exam Ace 💯📝" verify@examace.com', // sender address
                     to: `${req.body.name}, ${req.body.email}`, // list of receivers
                     subject: "Hello ✔", // Subject line
-                    text: `<a href="${config.API}/${token}"> Click this link to verify </a>`, // plain text body
-                    html: `<a href="${config.API}/${token}">Click this link to verify </a>`, // html body
+                    text: `<a href="${config.API}/verify?token=${token}"> Click this link to verify </a>`, // plain text body
+                    html: `<a href="${config.API}/verify?token=${token}">Click this link to verify </a>`, // html body
                   });
             })
             .catch((err: any) => {
@@ -108,10 +108,8 @@ auth.post('/signup', async (req: any, res: Response) => {
                 response.message = "account creation failed, try after sometime"
                 typeof err == "string"? response.errorMessage == err: null
             })
-        // }
+        }
     } catch (error:any) {
-
-               console.log(error);
                
         response.status = false
         response.message = typeof error == "string"? error: error.message
