@@ -98,8 +98,8 @@ auth.post('/signup', async (req: any, res: Response) => {
                     from: '"Exam Ace 💯📝" verify@examace.com', // sender address
                     to: `${req.body.name}, ${req.body.email}`, // list of receivers
                     subject: "Hello ✔", // Subject line
-                    text: `<a href="${config.API}/verify?token=${token}"> Click this link to verify </a>`, // plain text body
-                    html: `<a href="${config.API}/verify?token=${token}">Click this link to verify </a>`, // html body
+                    text: `<a href="${config.API}/auth/verify?token=${token}"> Click this link to verify </a>`, // plain text body
+                    html: `<a href="${config.API}/auth/verify?token=${token}">Click this link to verify </a>`, // html body
                   });
             })
             .catch((err: any) => {
