@@ -16,20 +16,20 @@ let cryptr = new Cryptr(process.env.ENC_PASS!)
 const auth:Application = express()
 auth.use(express.json())
 
-auth.get('/', async (req: any, res: Response) => {
+auth.get('/', async (req: Request, res: Response) => {
     res.send("Authentication Route")
 });
 
-auth.post('/signup', async (req: any, res: Response) => {
+auth.post('/signup', async (req: Request, res: Response) => {
 
-    console.log(req.body);
     
 
     let the_user = await UserDB.find({email: req.body.email}) || []
   
     let response: response = {
         status: false,
-        message: "somthing went wrong, try later"
+        message: "somthing went wrong, try later",
+        
     }
 
     const passwordStrengthPattern = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/i;
