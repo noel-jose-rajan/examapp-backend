@@ -85,22 +85,22 @@ auth.post('/signup', async (req: Request, res: Response) => {
           
             })
             .then(async (token:any)=>{
-                const transporter = mailer.createTransport({
-                    host: 'smtp.ethereal.email',
-                    port: 587,
-                    auth: {
-                        user: 'maci.medhurst97@ethereal.email',
-                        pass: 'hVZ63n8vnVcf6JhhXb'
-                    }
-                });
+                // const transporter = mailer.createTransport({
+                //     host: 'smtp.ethereal.email',
+                //     port: 587,
+                //     auth: {
+                //         user: 'maci.medhurst97@ethereal.email',
+                //         pass: 'hVZ63n8vnVcf6JhhXb'
+                //     }
+                // });
 
-                 await transporter.sendMail({
-                    from: '"Exam Ace 💯📝" verify@examace.com', // sender address
-                    to: `${req.body.name}, ${req.body.email}`, // list of receivers
-                    subject: "Hello ✔", // Subject line
-                    text: `<a href="${config.API}/auth/verify?token=${token}"> Click this link to verify </a>`, // plain text body
-                    html: `<a href="${config.API}/auth/verify?token=${token}">Click this link to verify </a>`, // html body
-                  });
+                //  await transporter.sendMail({
+                //     from: '"Exam Ace 💯📝" verify@examace.com', // sender address
+                //     to: `${req.body.name}, ${req.body.email}`, // list of receivers
+                //     subject: "Hello ✔", // Subject line
+                //     text: `<a href="${config.API}/auth/verify?token=${token}"> Click this link to verify </a>`, // plain text body
+                //     html: `<a href="${config.API}/auth/verify?token=${token}">Click this link to verify </a>`, // html body
+                //   });
             })
             .catch((err: any) => {
                 console.log(err);
