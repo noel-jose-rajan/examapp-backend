@@ -105,14 +105,14 @@ auth.post('/signup', async (req: Request, res: Response) => {
             .catch((err: any) => {
                 console.log(err);
                 response.status = false
-                response.message = "account creation failed, try after sometime"
+                response.message = err.message
                 typeof err == "string"? response.errorMessage == err: null
             })
         }
     } catch (error:any) {
                
         response.status = false
-        response.message = typeof error == "string"? error: error.message
+        response.message = "account creation failed, try after sometime"
     }
     
     res.json(response)
