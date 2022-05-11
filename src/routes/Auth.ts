@@ -101,6 +101,9 @@ auth.post('/signup', async (req: Request, res: Response) => {
                 //     text: `<a href="${config.API}/auth/verify?token=${token}"> Click this link to verify </a>`, // plain text body
                 //     html: `<a href="${config.API}/auth/verify?token=${token}">Click this link to verify </a>`, // html body
                 //   });
+
+                console.log(`${config.API}/auth/verify?token=${token}`);
+                
             })
             .catch((err: any) => {
                 console.log(err);
