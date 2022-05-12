@@ -22,8 +22,6 @@ auth.get('/', async (req: Request, res: Response) => {
 
 auth.post('/signup', async (req: Request, res: Response) => {
 
-    
-
     let the_user = await UserDB.find({email: req.body.email}) || []
   
     let response: response = {
@@ -35,7 +33,6 @@ auth.post('/signup', async (req: Request, res: Response) => {
     const passwordStrengthPattern = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/i;
 
     const emailPattern = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+/i;
-
     
     let data = (Object.entries(req.body).map((item: any) => {
 
@@ -58,64 +55,67 @@ auth.post('/signup', async (req: Request, res: Response) => {
             throw new Error("this is not a valid email address")
         }
         //Check Exising Email / Number
-        else if (the_user.length > 0) {
-            throw new Error("this email / phone number already exists")
+
+        if (the_user.length > 0) {
+            throw new Error("this email already exists")
         } 
         //Check Password Strength
-        else if(!(req.body.password).match(passwordStrengthPattern)){
+        if(!(req.body.password).match(passwordStrengthPattern)){
             throw new Error("weak password")
         }
         
-        else {
 
+        let save_user = new UserDB(data)
 
-            let save_user = new UserDB(data)
-    
-            await save_user.save()
-            .then(async (res: any) =>{
-                response.status = true
-                response.message = "account created!, the email will be only valid for 10 minutes"
+        await save_user.save()
+        .then(async (res: any) =>{
+            response.status = true
+            response.message = "account created!, the email will be only valid for 10 minutes"
 
-                let token = jwt.sign(
-                    (cryptr.encrypt((res._id))).toString(),
-                    process.env.JWT_EMAIL_TOKEN!
-                )
+            let token = jwt.sign(
+                (cryptr.encrypt((res._id))).toString(),
+                process.env.JWT_EMAIL_TOKEN!
+            )
 
-                return token
-          
-            })
-            .then(async (token:any)=>{
-                // const transporter = mailer.createTransport({
-                //     host: 'smtp.ethereal.email',
-                //     port: 587,
-                //     auth: {
-                //         user: 'maci.medhurst97@ethereal.email',
-                //         pass: 'hVZ63n8vnVcf6JhhXb'
-                //     }
-                // });
+            return token
+        
+        })
+        .then(async (token:any)=>{
+            // const transporter = mailer.createTransport({
+            //     host: 'smtp.ethereal.email',
+            //     port: 587,
+            //     auth: {
+            //         user: 'maci.medhurst97@ethereal.email',
+            //         pass: 'hVZ63n8vnVcf6JhhXb'
+            //     }
+            // });
 
-                //  await transporter.sendMail({
-                //     from: '"Exam Ace 💯📝" verify@examace.com', // sender address
-                //     to: `${req.body.name}, ${req.body.email}`, // list of receivers
-                //     subject: "Hello ✔", // Subject line
-                //     text: `<a href="${config.API}/auth/verify?token=${token}"> Click this link to verify </a>`, // plain text body
-                //     html: `<a href="${config.API}/auth/verify?token=${token}">Click this link to verify </a>`, // html body
-                //   });
+            //  await transporter.sendMail({
+            //     from: '"Exam Ace 💯📝" verify@examace.com', // sender address
+            //     to: `${req.body.name}, ${req.body.email}`, // list of receivers
+            //     subject: "Hello ✔", // Subject line
+            //     text: `<a href="${config.API}/auth/verify?token=${token}"> Click this link to verify </a>`, // plain text body
+            //     html: `<a href="${config.API}/auth/verify?token=${token}">Click this link to verify </a>`, // html body
+            //   });
 
-                console.log(`${config.API}/auth/verify?token=${token}`);
-                
-            })
-            .catch((err: any) => {
-                console.log(err);
-                response.status = false
-                response.message = err.message
-                typeof err == "string"? response.errorMessage == err: null
-            })
-        }
+            console.log(`${config.API}/auth/verify?token=${token}`);
+            
+        })
+        .catch((err: any) => {
+            console.log(err);
+            response.status = false
+            response.message = err.message
+            typeof err == "string"? response.errorMessage == err: null
+        })
+        
     } catch (error:any) {
+            response ={
+                ...response,
+                status : false,
+                message :error.message
+            }
                
-        response.status = false
-        response.message = "account creation failed, try after sometime"
+
     }
     
     res.json(response)
@@ -138,6 +138,13 @@ auth.post('/login', async (req: any, res: Response) => {
 
         let the_user = await UserDB.findOne({email: req.body.email})
 
+        if (!the_user) {
+            throw new Error("an account with this email does not exist")
+        }
+
+        if (the_user.password != req.body.password ) {
+            throw new Error("wrong password")
+        }
         if (the_user.password != req.body.password ) {
             throw new Error("wrong password")
         }
@@ -268,44 +275,42 @@ auth.post("/resetpassword",  async (req: any, res: Response) =>{
         message: "somthing went wrong, try later"
     }
 
-    try {
+    await UserDB.findOne({email: req.body.email})
+    .then(async (res:any)=>{
 
-        UserDB.findOne({email: req.body.email})
-        .then(async (res:any)=>{
-          
-            const transporter = mailer.createTransport({
-                host: 'smtp.ethereal.email',
-                port: 587,
-                auth: {
-                    user: 'maci.medhurst97@ethereal.email',
-                    pass: 'hVZ63n8vnVcf6JhhXb'
-                }
+
+        if (res == null) {
+            throw new Error("user cannot be found");
+            
+        }
+        
+        const transporter = mailer.createTransport({
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: 'maci.medhurst97@ethereal.email',
+                pass: 'hVZ63n8vnVcf6JhhXb'
+            }
+        });
+
+            await transporter.sendMail({
+            from: '"Exam Ace 💯📝" verify@examace.com', // sender address
+            to: `${req.body.email}`, // list of receivers
+            subject: "Hello ✔", // Subject line
+            text: `<p>Your Password is ${res.password}</p>`, // plain text body
+            html: `<p>Your Password is ${res.password}</p>`, // html body
             });
 
-             await transporter.sendMail({
-                from: '"Exam Ace 💯📝" verify@examace.com', // sender address
-                to: `${req.body.email}`, // list of receivers
-                subject: "Hello ✔", // Subject line
-                text: `<p>Your Password is ${res.password}</p>`, // plain text body
-                html: `<p>Your Password is ${res.password}</p>`, // html body
-              });
-
-           
-        })
-        .catch((err:any) =>{
-           throw new Error
-            
-        })
-   
-        response.status = true
-        response.message = "please check your e-mail for password recovery"
-
-    } catch (error:any) {
-        console.log(error);
+            response.status = true
+            response.message = "please check your e-mail for password recovery"
         
-        response.status = false
-        response.message = typeof error == "string"? error: "something went wrong!"
-    }
+    })
+    .catch((error:any)=>{
+                
+        response = {...response, status: true, message: error.message }
+     
+    })
+       
 
     res.json(response)
 })
