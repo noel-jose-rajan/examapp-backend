@@ -9,13 +9,13 @@ Content-Type: application/json
 
 {
     "name": "Noel jose",    
-    "email": "noe2l@gmail.com",
+    "email": "noe2hl@gmail.com",
     "password": "Mirage20#@"
 
 }
 
 ###
-GET {{url}}/verify?token=eyJhbGciOiJIUzI1NiJ9.MTBiNzU3OTNkM2U5MzBjODhhNmY4ZGExN2IyYWZkZjFmMTM1NjNlZDYxMDk2Y2JhMjdkMzQwY2UwZDg3M2VhN2QzMThlZjMyYzYxYzE1YmI4MjFiNGI2YzZjZGI0ZjQ5MzQzMGFhMmM1NzViMmJiZmYzZDZkOTdhNTBjNzkwY2VkNWRhMWI4N2NmYzlmYTBiNDhlNTAyNTRlNzMzNjM1YzM1NjZmNzgzY2ZkNGI2YTUwNmE1MWY4NzM2MTA2NGQyZTI4Y2ZiNzczZjdmNTg2MDFhMjAzNThjYmQ3ODc5MjY5YzRjMTFlMzE4OWEyOTM5.fVWmHfzKctnSDmAs_JcEtsD5I7hAQF7McDCFecf0cyk
+GET {{url}}/verify?token=eyJhbGciOiJIUzI1NiJ9.ODhjZmIxZTYzZTJkODNlMWE4NzZjMDFjOWMwNTU0N2Q1YjQ4NjQwNWQ3NzBlNzkxMDQxZmRjYjNmZGMxOWUzMTJkMzUyOTNiY2NlNWNiMzRhYTQ2NTUyYWE1Y2YwMTkzMjZiMzgwMjZhNTY1ZmI4MGVhYjNhMTU4NDg4NmM4Yjk4MmI4NmI3NmM3YzhkYTEyOWQ5OGNmM2FhNmQ2NDZjMmVlOTY2MzVhMzRkOThhOTBlNjY4Yjk5NzhmYTE4NWZiYTE1MzA0MDViMjQzZWJiOTJlNWY0MTA3MjU1OTlkMDZjMDcyMTFlODk3OTFmNjVi.jU6QD9BhvhsL_wOrh_UN-xguAxZ6z3lZ57fO25MED7k
 
 ###
 POST {{url}}/login
@@ -32,7 +32,7 @@ POST {{url}}/resetpassword
 Content-Type: application/json
 
 {
-    "email": "noe2l@gmail.com"
+    "email": "noel@gmail.com"
 }
 
 ###
@@ -42,3 +42,4 @@ Content-Type: application/json
 {
     "email": "noe2l@gmail.com"
 }
+
