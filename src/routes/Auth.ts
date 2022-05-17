@@ -109,7 +109,7 @@ auth.post('/signup', async (req: Request, res: Response) => {
         })
         
     } catch (error:any) {
-            response ={
+            response = {
                 ...response,
                 status : false,
                 message :error.message
@@ -157,9 +157,13 @@ auth.post('/login', async (req: any, res: Response) => {
 
         await UserDB.findByIdAndUpdate(the_user._id, {remember_token: token})
         .then(()=>{
-            response.status = true
-            response.message = "logged in"
-            response.data = {token}
+
+            response = {
+                status : true,
+                message : "logged in",
+                data : {token},
+            }
+
         })
         .catch(()=>{
             throw new Error("token authorization failed");
@@ -167,8 +171,11 @@ auth.post('/login', async (req: any, res: Response) => {
         })
 
     } catch (error:any) {
- 
-        response.message = typeof error == "string"? error: error.message
+        response = {
+            ...response,
+            status : false,
+            message : error.message,
+        }
     }
 
     res.json(response)

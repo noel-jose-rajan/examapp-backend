@@ -1,0 +1,14 @@
+@url = http://127.0.0.1:6000
+# @url = https://16e5-2405-201-e031-70a1-138b-6597-4b5e-6ccb.ngrok.io
+###
+POST {{url}}/
+#Returns Nothing
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.MDBjM2MwMWMwMTY2Mjc0NzE3ZDcyOWE5ZTM1ZTJlZjk5NjJmZThiZjU1ZWJlNTZjMWY1NGY5MWFlN2M5YjA5MGYxYmFhMmM4ZjViN2U3ZDMyMmRjN2JkMjcxNDJkNjk1NjI1ZjlmODZjMzMzN2MwODM4NzIxOTQ1MTZhMzY2ODRlYjg3YjkwZGQyODIyNzYzNjgyOWQzNTQzYTIxNjM3YmQzYjQ4YmI4MTA4NGU1NzYzNGEyNjY3MzlhZjU4MDJjZTg4ODhlYjAxODZjYjI0NTdhNmZiZjg1MmJhYmQxZmI2MDdkYTZjMGUxYWIzMmY1.XhRdBSBf6YEvENdggZwnJxnSmnEjiUytIgMPMysY_pA
+Content-Type: application/json
+
+{
+    "plan": 30,
+    "success_url": "https://www.yatindia.com/?payment=yes",
+    "cancel_url": "https://www.yatindia.com/?payment=no"
+}
+

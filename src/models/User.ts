@@ -12,6 +12,13 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    
+    plan: {
+
+        name: String,
+        start: String,
+        required: false
+    },
 
     email_verified_at: {
         type: String,
