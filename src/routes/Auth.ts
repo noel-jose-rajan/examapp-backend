@@ -9,12 +9,11 @@ import config from "../config"
 let cryptr = new Cryptr(process.env.ENC_PASS!)
 
 
-
-
-
-
 const auth:Application = express()
 auth.use(express.json())
+
+
+
 
 auth.get('/', async (req: Request, res: Response) => {
     res.send("Authentication Route")

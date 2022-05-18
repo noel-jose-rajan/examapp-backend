@@ -8,7 +8,7 @@ Content-Type: application/json
 
 {
     "plan": 30,
-    "success_url": "https://www.yatindia.com/?payment=yes",
-    "cancel_url": "https://www.yatindia.com/?payment=no"
+    "success_url": "https://localhost:8080/app/?payment=yes",
+    "cancel_url": "https://localhost:8080/app/?payment=no"
 }
 

@@ -1,1 +1,32 @@
-GET http://127.0.0.1:5000/user
+@url = http://127.0.0.1:5000/user
+@token = eyJhbGciOiJIUzI1NiJ9.NjNkNWM4N2I1OTBhYTc0ZjA1ZDdkMTI2YWFhMDRkNTJjNjdmNGVkOWY1Y2NhY2E4ZDg2YTZkOTk4OWUxNjkwYWRhMDMyMzZkODA0MjljY2UxMGJiZjRhMDg0N2NkYTBiN2QxNmY1ODEwMWU4NjMzZjU2OTNjMzM0NGMzM2I4N2E4NWRhNTE2MGMyYWZjNWE0NTRmZmIzNGJmOWUzMTU2Y2E1MWUwNWVkNzViNDhkYjllNTFkMWZkYmRmYTdhYjcwMTg0YWYxNTY2ODc5OTliZjYxOTFhN2MxNzFhY2Q1ZDc0YmE2YmYyOWJhMTRlNjMw.NNTJclMvuRlP9erXmRnAZ7THP0SKxfZOByXPyS3l2L4
+
+###
+POST {{url}}/data
+#Returns Nothing
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+POST {{url}}/update
+#Returns Nothing
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "email" : "1212@ccsdfasd.fdsdf",
+    "name" : "1112233"
+}
+
+###
+POST {{url}}/updatepassword
+#Returns Nothing
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "old_password" : "1112233",
+    "new_password" : "1@lkdfknkhnKJhijojJN2233s"
+}
+
+
