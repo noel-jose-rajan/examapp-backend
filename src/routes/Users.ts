@@ -50,7 +50,11 @@ users.post('/data', async (req, res)=>{
 
         let data = await User.findById(
             req.body.authorization, 
-            {remember_token: 0, password: 0})
+            {
+                remember_token: 0, 
+                password: 0,
+                _id : 0
+            })
 
 
         response = {
