@@ -1,0 +1,15 @@
+@url = http://127.0.0.1:5000/test
+@token = eyJhbGciOiJIUzI1NiJ9.NjNkNWM4N2I1OTBhYTc0ZjA1ZDdkMTI2YWFhMDRkNTJjNjdmNGVkOWY1Y2NhY2E4ZDg2YTZkOTk4OWUxNjkwYWRhMDMyMzZkODA0MjljY2UxMGJiZjRhMDg0N2NkYTBiN2QxNmY1ODEwMWU4NjMzZjU2OTNjMzM0NGMzM2I4N2E4NWRhNTE2MGMyYWZjNWE0NTRmZmIzNGJmOWUzMTU2Y2E1MWUwNWVkNzViNDhkYjllNTFkMWZkYmRmYTdhYjcwMTg0YWYxNTY2ODc5OTliZjYxOTFhN2MxNzFhY2Q1ZDc0YmE2YmYyOWJhMTRlNjMw.NNTJclMvuRlP9erXmRnAZ7THP0SKxfZOByXPyS3l2L4
+
+###
+POST {{url}}/questionPaper
+#Returns Nothing
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "subject" : [
+        ["physics", 60],
+        ["chemistry", 2]
+    ]
+}

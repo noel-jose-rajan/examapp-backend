@@ -7,6 +7,7 @@ import cors from "cors"
 import AuthRoute from "./routes/Auth";
 import IndexRoute from "./routes/Index";
 import UsersRoute from "./routes/Users";
+import TestRoute from "./routes/Test";
 
 
 const app  = express();
@@ -25,6 +26,7 @@ app.use(cors({
 app.use("/",IndexRoute)
 app.use("/auth",AuthRoute)
 app.use("/user", UsersRoute)
+app.use("/test", TestRoute)
 
 
 app.listen(5000, ()=>{ console.log("The server is running at http://127.0.0.1:5000")})
