@@ -5,6 +5,7 @@ import { response } from "../types/types"
 import jwt from "jsonwebtoken"
 import Cryptr from "cryptr"
 import Question from "../models/Question"
+import SavedTest from "../models/SavedTest"
 
 let cryptr = new Cryptr(process.env.ENC_PASS!)
 
@@ -95,6 +96,8 @@ test.post('/questionPaper', async (req: Request, res: Response) => {
     }
 
     response.data = {
+        status: true,
+        message: "Question Paper Generated",
         questions :  data,
         count : data.length
     }
@@ -110,53 +113,31 @@ test.post('/questionPaper', async (req: Request, res: Response) => {
 });
 
 //Save Test Paper
-test.post('/questionPaper', async (req: Request, res: Response) => {
+test.post('/save', async (req: Request, res: Response) => {
     let response:response = {
         status: false,
-        message: "Question Paper Preperation failed!"
+        message: "answer paper save failed!"
     }
 
    try {
 
-    
-       
-    if (!req.body.subject) {
-        throw new Error("please send the subject in the query")
+    if (!req.body.authorization) {
+        throw new Error("please check the token")
     }
 
-    let subjects = req.body.subject
-    let data:any = [];
-    let subjectsRequested:any = [];
-
-
-    for (let index = 0; index < subjects.length; index++) {
-
+    await SavedTest.create({
+        userId: req.body.authorization,
+        questionPaper : req.body.questionPaper,
+        metaData : req.body.questionPaper.metaData,
+        selectedAnswers : req.body.questionPaper.selectedAnswers,
+        testDate : req.body.questionPaper.testDate
         
-        const element = subjects[index];
 
-        if (subjectsRequested.includes(element[0])) {
-            continue;
-        }else{
-            subjectsRequested.push(element[0])
-        }
+    })
 
-        let query:any = await Question.aggregate([
-            { 
-              $match: { 
-                subject: element[0] 
-              }
-            },
-            { $sample: { size: element[1] > 50? 50 : element[1] } }
-        ]).catch((error:any)=>{
-
-        })
-
-      data.push(...query)
-    }
-
-    response.data = {
-        questions :  data,
-        count : data.length
+    response = {
+        status: true,
+        message: "answer paper saved!"
     }
    
 

@@ -3,7 +3,8 @@ import Question from "./Question";
 
 const SavedTestSchema = new Schema({
 
-    questionPaper: { type: [ Question ] } ,
+    userId: String,
+    questionPaper:  Object  ,
     selectedAnswers: [Number],
     metaData: [
         {correct_answers: Number},
