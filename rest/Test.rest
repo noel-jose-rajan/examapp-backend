@@ -9,7 +9,6 @@ Content-Type: application/json
 
 {
     "subject" : [
-        ["physics", 60],
-        ["chemistry", 2]
+        ["test", 10]
     ]
 }
