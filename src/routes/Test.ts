@@ -110,7 +110,69 @@ test.post('/questionPaper', async (req: Request, res: Response) => {
 });
 
 //Save Test Paper
+test.post('/questionPaper', async (req: Request, res: Response) => {
+    let response:response = {
+        status: false,
+        message: "Question Paper Preperation failed!"
+    }
 
+   try {
+
+    
+       
+    if (!req.body.subject) {
+        throw new Error("please send the subject in the query")
+    }
+
+    let subjects = req.body.subject
+    let data:any = [];
+    let subjectsRequested:any = [];
+
+
+    for (let index = 0; index < subjects.length; index++) {
+
+        
+        const element = subjects[index];
+
+        if (subjectsRequested.includes(element[0])) {
+            continue;
+        }else{
+            subjectsRequested.push(element[0])
+        }
+
+        let query:any = await Question.aggregate([
+            { 
+              $match: { 
+                subject: element[0] 
+              }
+            },
+            { $sample: { size: element[1] > 50? 50 : element[1] } }
+        ]).catch((error:any)=>{
+
+        })
+
+      data.push(...query)
+    }
+
+    response.data = {
+        questions :  data,
+        count : data.length
+    }
+   
+
+   } catch (error) {
+       console.log(error);
+       
+   }
+
+    
+    res.json(response)
+});
+
+
+//Retrieve Saved Test
+
+//Retrieve Specific Saved Test
 
 
 
