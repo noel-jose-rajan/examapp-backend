@@ -3,18 +3,17 @@ import Question from "./Question";
 
 const SavedTestSchema = new Schema({
 
-    userId: String,
-    questionPaper:  Object  ,
-    selectedAnswers: [Number],
-    metaData: [
-        {correct_answers: Number},
-        {wrong_answers: Number},
-        {not_selected_answers: Number},
-        {test_name: String}
-
-    ],
-    testDate:[{test_Date: String}]
-
+    userId: {type:String},
+    questionPaper:  [{type:Object}]  ,
+    selectedAnswers: { type: [Number], required: true },
+    metaData: { 
+        correct_answers: {type: Number},
+        wrong_answers: {type: Number}, 
+        not_selected_answers: {type: Number} ,
+        test_name:{type:String}
+    }
+    ,
+    testDate:{type:String}
 
 })
 

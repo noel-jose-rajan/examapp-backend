@@ -125,20 +125,81 @@ test.post('/save', async (req: Request, res: Response) => {
         throw new Error("please check the token")
     }
 
+    if (!req.body.questionPaper || 
+        !req.body.metaData || 
+        !req.body.selectedAnswers || 
+        !req.body.testDate ) 
+        {
+            throw new Error("please send all the data required to save the test")
+        }
+
     await SavedTest.create({
         userId: req.body.authorization,
         questionPaper : req.body.questionPaper,
-        metaData : req.body.questionPaper.metaData,
-        selectedAnswers : req.body.questionPaper.selectedAnswers,
-        testDate : req.body.questionPaper.testDate
+        metaData : req.body.metaData,
+        selectedAnswers : req.body.selectedAnswers,
+        testDate : req.body.testDate
         
 
     })
+
+    console.log(req.body);
+    
 
     response = {
         status: true,
         message: "answer paper saved!"
     }
+   
+
+   } catch (error:any) {
+    response = {
+        status: false,
+        message: error.message
+    }
+   
+       
+   }
+
+    
+    res.json(response)
+});
+
+
+//Retrieve Saved Test
+test.post('/mytests', async (req: Request, res: Response) => {
+    let response:response = {
+        status: false,
+        message: "answer papers failed to fetch!"
+    }
+
+   try {
+
+    if (!req.body.authorization) {
+        throw new Error("please check the token")
+    }
+
+    await SavedTest.find({userId: req.body.authorization},{
+        _id: 1,
+        metaData : 1,
+        testDate : 1
+    })
+    .then(res => {
+
+        response = {
+            status: true,
+            message: "answer papers fetched!",
+            data : res
+        }
+        
+        
+    })
+    .catch(err => {
+        throw new Error(err)
+        
+    })
+
+    
    
 
    } catch (error) {
@@ -151,9 +212,46 @@ test.post('/save', async (req: Request, res: Response) => {
 });
 
 
-//Retrieve Saved Test
-
 //Retrieve Specific Saved Test
+test.post('/testdetails', async (req: Request, res: Response) => {
+    let response:response = {
+        status: false,
+        message: "answer paper failed to fetch!"
+    }
+
+   try {
+
+    if (!req.body.test_id) {
+        throw new Error("please send the test id")
+    }
+
+    await SavedTest.findById(req.body.test_id)
+    .then(res => {
+
+        response = {
+            status: true,
+            message: "answer paper fetched!",
+            data : res
+        }
+        
+        
+    })
+    .catch(err => {
+        throw new Error(err)
+        
+    })
+
+    
+   
+
+   } catch (error) {
+       console.log(error);
+       
+   }
+
+    
+    res.json(response)
+});
 
 
 
