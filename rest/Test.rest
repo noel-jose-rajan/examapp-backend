@@ -1,3 +1,4 @@
+
 @url = http://127.0.0.1:5000/test
 @token = eyJhbGciOiJIUzI1NiJ9.NjNkNWM4N2I1OTBhYTc0ZjA1ZDdkMTI2YWFhMDRkNTJjNjdmNGVkOWY1Y2NhY2E4ZDg2YTZkOTk4OWUxNjkwYWRhMDMyMzZkODA0MjljY2UxMGJiZjRhMDg0N2NkYTBiN2QxNmY1ODEwMWU4NjMzZjU2OTNjMzM0NGMzM2I4N2E4NWRhNTE2MGMyYWZjNWE0NTRmZmIzNGJmOWUzMTU2Y2E1MWUwNWVkNzViNDhkYjllNTFkMWZkYmRmYTdhYjcwMTg0YWYxNTY2ODc5OTliZjYxOTFhN2MxNzFhY2Q1ZDc0YmE2YmYyOWJhMTRlNjMw.NNTJclMvuRlP9erXmRnAZ7THP0SKxfZOByXPyS3l2L4
 
@@ -11,4 +12,171 @@ Content-Type: application/json
     "subject" : [
         ["test", 10]
     ]
+}
+
+###
+POST {{url}}/save
+#Returns Nothing
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
+{
+    "questionPaper": [{
+        "_id": "628cc67ef2285a4984952d5a",
+        "question": "47. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "https://i.imgur.com/x16bNCA.png",
+        "options": [
+            ["https://i.imgur.com/ntlDcmL.png", ""],
+            ["https://i.imgur.com/KgF6XHY.png", ""],
+            ["https://i.imgur.com/bwZPOCx.png", ""],
+            ["https://i.imgur.com/JicYnls.png", ""]
+        ],
+        "answer": 4,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 47",
+        "year": 2021
+    }, {
+        "_id": "628cc67ef2285a4984952e29",
+        "question": "254. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "",
+        "options": [
+            ["", "Option 1 Text"],
+            ["", "Option 2 Text"],
+            ["", "Option 3 Text"],
+            ["", "Option 4 Text"]
+        ],
+        "answer": 4,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 254",
+        "year": 2021
+    }, {
+        "_id": "628cc67ef2285a4984952e86",
+        "question": "347. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "https://i.imgur.com/oGDLoIs.png",
+        "options": [
+            ["https://i.imgur.com/ntlDcmL.png", ""],
+            ["https://i.imgur.com/KgF6XHY.png", ""],
+            ["https://i.imgur.com/bwZPOCx.png", ""],
+            ["https://i.imgur.com/JicYnls.png", ""]
+        ],
+        "answer": 4,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 347",
+        "year": 2021
+    }, {
+        "_id": "628cc67ef2285a4984952dad",
+        "question": "130. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "",
+        "options": [
+            ["", "Option 1 Text"],
+            ["", "Option 2 Text"],
+            ["", "Option 3 Text"],
+            ["", "Option 4 Text"]
+        ],
+        "answer": 1,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 130",
+        "year": 2021
+    }, {
+        "_id": "628cc67ef2285a4984952e7c",
+        "question": "337. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "",
+        "options": [
+            ["https://i.imgur.com/ntlDcmL.png", ""],
+            ["https://i.imgur.com/KgF6XHY.png", ""],
+            ["https://i.imgur.com/bwZPOCx.png", ""],
+            ["https://i.imgur.com/JicYnls.png", ""]
+        ],
+        "answer": 4,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 337",
+        "year": 2021
+    }, {
+        "_id": "628cc67ef2285a4984952e24",
+        "question": "249. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "https://i.imgur.com/x16bNCA.png",
+        "options": [
+            ["https://i.imgur.com/ntlDcmL.png", ""],
+            ["https://i.imgur.com/KgF6XHY.png", ""],
+            ["https://i.imgur.com/bwZPOCx.png", ""],
+            ["https://i.imgur.com/JicYnls.png", ""]
+        ],
+        "answer": 4,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 249",
+        "year": 2021
+    }, {
+        "_id": "628cc67ef2285a4984952dce",
+        "question": "163. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "",
+        "options": [
+            ["https://i.imgur.com/ntlDcmL.png", ""],
+            ["https://i.imgur.com/KgF6XHY.png", ""],
+            ["https://i.imgur.com/bwZPOCx.png", ""],
+            ["https://i.imgur.com/JicYnls.png", ""]
+        ],
+        "answer": 2,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 163",
+        "year": 2021
+    }, {
+        "_id": "628cc67ef2285a4984952db0",
+        "question": "133. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "",
+        "options": [
+            ["https://i.imgur.com/ntlDcmL.png", ""],
+            ["https://i.imgur.com/KgF6XHY.png", ""],
+            ["https://i.imgur.com/bwZPOCx.png", ""],
+            ["https://i.imgur.com/JicYnls.png", ""]
+        ],
+        "answer": 4,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 133",
+        "year": 2021
+    }, {
+        "_id": "628cc67ef2285a4984952d35",
+        "question": "10. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "image": "",
+        "options": [
+            ["", "Option 1 Text"],
+            ["", "Option 2 Text"],
+            ["", "Option 3 Text"],
+            ["", "Option 4 Text"]
+        ],
+        "answer": 4,
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "toughness": 1,
+        "subject": "physics",
+        "topic": "Topic - 10",
+        "year": 2021
+    }],
+    "selectedAnswers": [4, 1, 2, 5, 2, 5, 3, 3, 4],
+    "metaData": [{
+        "correct_answers": 2
+    }, {
+        "wrong_answers": 5
+    }, {
+        "not_selected_answers": 2
+    }],
+    "testDate": [{
+        "test_Date": "24/5/2022, 8:53:20 pm"
+    }]
+    
 }
