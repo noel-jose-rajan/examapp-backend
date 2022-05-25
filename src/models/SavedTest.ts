@@ -10,6 +10,7 @@ const SavedTestSchema = new Schema({
         {correct_answers: Number},
         {wrong_answers: Number},
         {not_selected_answers: Number},
+        {test_name: String}
 
     ],
     testDate:[{test_Date: String}]
